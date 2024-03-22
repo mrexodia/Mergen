@@ -1,0 +1,28 @@
+[cmake]
+version = "3.16"
+cmkr-include = "cmake/cmkr.cmake"
+
+[project]
+name = "Mergen"
+
+[variables]
+CMAKE_MODULE_PATH = "${CMAKE_CURRENT_SOURCE_DIR}/cmake"
+CMAKE_CXX_FLAGS_DEBUG = "-O0 -gfull"
+
+[fetch-content.linux-pe]
+git = "https://github.com/can1357/linux-pe"
+tag = "58249d9"
+
+[fetch-content.Zydis]
+git = "https://github.com/zyantific/zydis"
+tag = "v4.1.0"
+
+[find-package.LLVM-Wrapper]
+
+[target.lifter]
+type = "executable"
+sources = ["lifter/*.cpp"]
+headers = ["lifter/*.h"]
+link-libraries = ["Zydis", "LLVM-Wrapper", "linux-pe"]
+compile-features = ["cxx_std_20"]
+linux.compile-options = ["-g"]

@@ -1,0 +1,8 @@
+{
+    "cmake.debugConfig": {
+        "args": [
+            "${workspaceFolder}/liftme.exe",
+            "0x140001000",
+        ]
+    }
+}
